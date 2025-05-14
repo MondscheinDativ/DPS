@@ -10,11 +10,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
+            line-height: 2; /* 全局行间距设置为2倍 */
         }
 
         body {
             background-color: #f0f0f0;
-            overflow-x: hidden;
         }
 
         /* 首页按钮样式 */
@@ -130,23 +130,38 @@
         .table-content p {
             margin-bottom: 10px;
         }
+
+        /* 自定义样式 */
+        .label {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .report-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .amount-toggle {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <!-- 首页部分 -->
     <div id="homePage">
         <button class="header-button" id="homeLoginBtn">Login</button>
-        
         <div class="home-image-container">
-            <img src="file:///C:/Users/TR/Desktop/ding.png" class="home-image" alt="Top Image">
+            <img src="ding.png" class="home-image" alt="Top Image">
         </div>
-        
         <div class="home-image-container">
-            <img src="file:///C:/Users/TR/Desktop/.png" class="home-image" alt="Middle Image">
+            <img src="zhong.png" class="home-image" alt="Middle Image">
         </div>
-        
         <div class="home-image-container">
-            <img src="file:///C:/Users/TR/Desktop/.png" class="home-image" alt="Bottom Image">
+            <img src="di.png" class="home-image" alt="Bottom Image">
         </div>
     </div>
 
@@ -183,10 +198,10 @@
                     <h3>Deposit Details</h3>
                 </div>
                 <div class="table-content">
-                    <p>Rent Amount: 24 weeks</p>
-                    <p>Deposit Amount: £7100</p>
-                    <p>Report to claim</p>
-                    <p>Tenancy start date: NOT Start yet</p>
+                    <p><span class="label">Rent Amount:</span> 24 weeks</p>
+                    <p><span class="label">Deposit Amount:</span> <span id="amountDisplay" class="amount-toggle">view here</span></p>
+                    <p><span class="label">Report to claim:</span> <span class="report-link">Report to claim</span></p>
+                    <p><span class="label">Tenancy start date:</span> NOT Start yet</p>
                 </div>
             </div>
             <!-- 右侧表格 -->
@@ -195,16 +210,16 @@
                     <h3>Manage your tenancy</h3>
                 </div>
                 <div class="table-content">
-                    <p>Deposit Address: SE1 8SU 205 - Studio - Antigallican, 428 Woolwich Rd, London, SE7 8SU</p>
+                    <p><span class="label">Deposit Address:</span> SE1 8SU 205 - Studio - Antigallican, 428 Woolwich Rd, London, SE7 8SU</p>
                 </div>
                 <div class="table-header">
                     <h3>Property details</h3>
                 </div>
                 <div class="table-content">
-                    <p>Address: Vonder Wembley Wealdstone Brooh, Flat Fridman House, Olympic Way, Wembley, London, HA9 0NP</p>
-                    <p>Property Type: Flat/Appartment</p>
-                    <p>Is this property furnished? Furnished</p>
-                    <p>Number of Bedrooms: 1</p>
+                    <p><span class="label">Address:</span> Vonder Wembley Wealdstone Brooh, Flat Fridman House, Olympic Way, Wembley, London, HA9 0NP</p>
+                    <p><span class="label">Property Type:</span> Flat/Appartment</p>
+                    <p><span class="label">Is this property furnished?</span> Furnished</p>
+                    <p><span class="label">Number of Bedrooms:</span> 1</p>
                 </div>
             </div>
         </div>
@@ -212,13 +227,13 @@
 
     <script>
         // 首页登录按钮点击事件：隐藏首页，显示登录页
-        document.getElementById('homeLoginBtn').addEventListener('click', function () {
+        document.getElementById('homeLoginBtn').addEventListener('click', function() {
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
         });
 
         // 登录表单提交事件
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -229,6 +244,21 @@
             } else {
                 alert('Invalid email or password');
             }
+        });
+
+        // 金额显示切换
+        document.getElementById('amountDisplay').addEventListener('click', function() {
+            const display = document.getElementById('amountDisplay');
+            if (display.textContent === 'view here') {
+                display.textContent = '£7100';
+            } else {
+                display.textContent = 'view here';
+            }
+        });
+
+        // Report to claim 点击事件
+        document.querySelector('.report-link').addEventListener('click', function() {
+            alert('Report functionality will be implemented here.');
         });
     </script>
 </body>
