@@ -89,21 +89,6 @@
             margin-top: 20px;
         }
 
-        /* 首页按钮样式 */
-        .header-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #ff9900;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
         /* 首页内容区域 */
         .home-content {
             background-color: #f5f5dc; /* 米色背景 */
@@ -311,7 +296,6 @@
         <!-- 顶部绿色区域 -->
         <div class="top-green-section">
             <div class="dps-logo">DPS</div>
-            <button class="header-button" id="homeLoginBtn">Login</button>
         </div>
         
         <!-- 新登录界面 -->
@@ -321,11 +305,11 @@
                     <div class="login-fields">
                         <div class="login-field">
                             <label for="reference">Reference</label>
-                            <input type="text" id="reference" value="universityofyork" required>
+                            <input type="text" id="reference" required>
                         </div>
                         <div class="login-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" value="zl8412469ycedu" required>
+                            <input type="email" id="email" required>
                         </div>
                     </div>
                     <button type="submit" class="login-button">Login</button>
@@ -530,22 +514,16 @@
     </div>
 
     <script>
-        // 新登录表单提交事件
+        // 新登录表单提交事件 - 跳转到第二页登录
         document.getElementById('newLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const reference = document.getElementById('reference').value;
             const email = document.getElementById('email').value;
-            // 验证账户密码
-            if (email === 'zl8412469ycedu' && reference === 'universityofyork') {
-                document.getElementById('homePage').classList.add('hidden');
-                document.getElementById('mainPage').classList.remove('hidden');
-            } else {
-                alert('Invalid reference or email');
-            }
-        });
-
-        // 首页登录按钮点击事件：隐藏首页，显示登录页
-        document.getElementById('homeLoginBtn').addEventListener('click', function() {
+            
+            // 保存输入的信息到登录页
+            document.getElementById('email').value = email;
+            
+            // 跳转到登录页
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
         });
