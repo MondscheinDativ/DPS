@@ -35,18 +35,46 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* 首页图片样式 */
-        .home-image-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
+        /* 首页内容区域 */
+        .home-content {
+            background-color: #f5f5dc; /* 米色背景 */
+            padding: 80px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .home-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .home-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .home-card {
+            display: flex;
+            padding: 20px;
+        }
+
+        .home-icon {
+            color: #4CAF50; /* 绿色图标 */
+            font-size: 60px; /* 图标大小相当于三行字高度 */
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .home-text h3 {
+            color: #4CAF50; /* 绿色标题 */
+            font-size: 24px; /* 较大的标题字体 */
+            margin-bottom: 10px;
+        }
+
+        .home-text p {
+            color: #333;
         }
 
         .header-section {
@@ -212,14 +240,54 @@
     <!-- 首页部分 -->
     <div id="homePage">
         <button class="header-button" id="homeLoginBtn">Login</button>
-        <div class="home-image-container">
-            <img src="ding.png" class="home-image" alt="Top Image">
-        </div>
-        <div class="home-image-container">
-            <img src="zhong.png" class="home-image" alt="Middle Image">
-        </div>
-        <div class="home-image-container">
-            <img src="di.png" class="home-image" alt="Bottom Image">
+        
+        <!-- 米色内容区域 -->
+        <div class="home-content">
+            <div class="home-grid">
+                <!-- 第一行第一个模块 -->
+                <div class="home-card">
+                    <div class="home-icon">
+                        <i class="fa-solid fa-award"></i> <!-- 奖章图标 -->
+                    </div>
+                    <div class="home-text">
+                        <h3>Top-rated customer service</h3>
+                        <p>We're rated excellent on Trustpilot, with over 3,000 reviews from customers just like you.</p>
+                    </div>
+                </div>
+                
+                <!-- 第一行第二个模块 -->
+                <div class="home-card">
+                    <div class="home-icon">
+                        <i class="fa-solid fa-book"></i> <!-- 书本图标 -->
+                    </div>
+                    <div class="home-text">
+                        <h3>Free training</h3>
+                        <p>We've trained over 5,500 letting agents and landlords since June 2020 through our dispute webinars.</p>
+                    </div>
+                </div>
+                
+                <!-- 第二行第一个模块 -->
+                <div class="home-card">
+                    <div class="home-icon">
+                        <i class="fa-solid fa-hand-holding-heart"></i> <!-- 手托图标 -->
+                    </div>
+                    <div class="home-text">
+                        <h3>All the support you need</h3>
+                        <p>A library of helpful articles, videos and other tools to keep your tenancies and deposits on track.</p>
+                    </div>
+                </div>
+                
+                <!-- 第二行第二个模块 -->
+                <div class="home-card">
+                    <div class="home-icon">
+                        <i class="fa-solid fa-file-text"></i> <!-- 文件图标 -->
+                    </div>
+                    <div class="home-text">
+                        <h3>Regular industry updates</h3>
+                        <p>Get the latest news and guidance about deposit protection.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- 首页页脚 -->
