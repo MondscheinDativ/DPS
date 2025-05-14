@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .form-group {
@@ -64,9 +63,17 @@
             display: none;
         }
 
+        .main-header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
         .main-content {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto;
             display: flex;
             gap: 20px;
         }
@@ -76,7 +83,7 @@
             flex: 1;
             background-color: white;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .table-header {
@@ -87,79 +94,90 @@
         }
 
         .table-content {
-            padding: 10px;
+            padding: 15px;
         }
 
         .table-content p {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
-
 <body>
-    <!-- 首页部分（简化保留上半部分风格） -->
-    <div class="header-section">
-        <h1>Log in to your DPS account</h1>
-    </div>
-    <div class="login-box" id="loginSection">
-        <h2>Log in to your Custodial DPS account</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit">Log in</button>
-        </form>
+    <!-- 登录页 -->
+    <div id="loginPage">
+        <div class="header-section">
+            <h1>Log in to your DPS account</h1>
+        </div>
+        <div class="login-box">
+            <h2>Log in to your Custodial DPS account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Log in</button>
+            </form>
+        </div>
     </div>
 
-    <!-- 主界面部分 -->
-    <div class="main-content hidden" id="mainSection">
-        <div class="left-section">
-            <div class="table-header">
-                <h2>Review your DPS account</h2>
-            </div>
-            <div class="table-content">
-                <!-- 左侧表格内容可根据实际需求扩展，这里先按布局预留 -->
-            </div>
+    <!-- 主界面 -->
+    <div id="mainPage" class="hidden">
+        <div class="main-header">
+            <h2>Review your DPS account</h2>
         </div>
-        <div class="right-section">
-            <div class="table-header">
-                <h3>Manage your tenancy</h3>
+        <div class="main-content">
+            <!-- 左侧表格 -->
+            <div class="left-section">
+                <div class="table-header">
+                    <h3>Deposit Details</h3>
+                </div>
+                <div class="table-content">
+                    <p>Rent Amount: 24 weeks</p>
+                    <p>Deposit Amount: £7100</p>
+                    <p>Report to claim</p>
+                    <p>Tenancy start date: NOT Start yet</p>
+                </div>
             </div>
-            <div class="table-content">
-                <p>Deposit Address: SE1 8SU 205 - Studio - Antigallican, 428 Woolwich Rd, London, SE7 8SU</p>
-            </div>
-            <div class="table-header">
-                <h3>Property details</h3>
-            </div>
-            <div class="table-content">
-                <p>Address: Vonder Wembley Wealdstone Brooh, Flat Fridman House, Olympic Way, Wembley, London, HA9 0NP</p>
-                <p>Property Type: Flat/Appartment</p>
-                <p>Is this property furnished? Furnished</p>
-                <p>Number of Bedrooms: 1</p>
+            
+            <!-- 右侧表格 -->
+            <div class="right-section">
+                <div class="table-header">
+                    <h3>Manage your tenancy</h3>
+                </div>
+                <div class="table-content">
+                    <p>Deposit Address: SE1 8SU 205 - Studio - Antigallican, 428 Woolwich Rd, London, SE7 8SU</p>
+                </div>
+                <div class="table-header">
+                    <h3>Property details</h3>
+                </div>
+                <div class="table-content">
+                    <p>Address: Vonder Wembley Wealdstone Brooh, Flat Fridman House, Olympic Way, Wembley, London, HA9 0NP</p>
+                    <p>Property Type: Flat/Appartment</p>
+                    <p>Is this property furnished? Furnished</p>
+                    <p>Number of Bedrooms: 1</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             // 验证账户密码
             if (email === 'zl8412469ycedu' && password === 'asdf123456') {
-                document.getElementById('loginSection').classList.add('hidden');
-                document.getElementById('mainSection').classList.remove('hidden');
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('mainPage').classList.remove('hidden');
             } else {
                 alert('Invalid email or password');
             }
         });
     </script>
 </body>
-
 </html>
