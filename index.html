@@ -16,6 +16,26 @@
             background-color: #f0f0f0;
         }
 
+        /* 首页按钮样式 */
+        .header-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 首页图片样式 */
+        .home-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
         .header-section {
             background-color: #4CAF50;
             color: white;
@@ -29,7 +49,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -83,7 +103,7 @@
             flex: 1;
             background-color: white;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .table-header {
@@ -103,8 +123,16 @@
     </style>
 </head>
 <body>
+    <!-- 首页部分 -->
+    <div id="homePage">
+        <button class="header-button" id="homeLoginBtn">Login</button>
+        <img src="ding.jpg" class="home-image" alt="Image 1">
+        <img src="zhong.jpg" class="home-image" alt="Image 2">
+        <img src="di.jpg" class="home-image" alt="Image 3">
+    </div>
+
     <!-- 登录页 -->
-    <div id="loginPage">
+    <div id="loginPage" class="hidden">
         <div class="header-section">
             <h1>Log in to your DPS account</h1>
         </div>
@@ -142,7 +170,6 @@
                     <p>Tenancy start date: NOT Start yet</p>
                 </div>
             </div>
-            
             <!-- 右侧表格 -->
             <div class="right-section">
                 <div class="table-header">
@@ -165,11 +192,17 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // 首页登录按钮点击事件：隐藏首页，显示登录页
+        document.getElementById('homeLoginBtn').addEventListener('click', function () {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+        });
+
+        // 登录表单提交事件
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
             // 验证账户密码
             if (email === 'zl8412469ycedu' && password === 'asdf123456') {
                 document.getElementById('loginPage').classList.add('hidden');
