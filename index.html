@@ -14,11 +14,12 @@
 
         body {
             background-color: #f0f0f0;
+            overflow-x: hidden;
         }
 
         /* 首页按钮样式 */
         .header-button {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             padding: 10px 20px;
@@ -27,13 +28,22 @@
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* 首页图片样式 */
+        .home-image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
         .home-image {
             width: 100%;
-            height: auto;
-            margin-bottom: 10px;
+            height: 100%;
+            object-fit: cover;
         }
 
         .header-section {
@@ -49,7 +59,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .form-group {
@@ -103,7 +113,7 @@
             flex: 1;
             background-color: white;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .table-header {
@@ -126,9 +136,18 @@
     <!-- 首页部分 -->
     <div id="homePage">
         <button class="header-button" id="homeLoginBtn">Login</button>
-        <img src="ding.png" class="home-image" alt="Image 1">
-        <img src="zhong.png" class="home-image" alt="Image 2">
-        <img src="di.png" class="home-image" alt="Image 3">
+        
+        <div class="home-image-container">
+            <img src="ding.png" class="home-image" alt="Top Image">
+        </div>
+        
+        <div class="home-image-container">
+            <img src="zhong.png" class="home-image" alt="Middle Image">
+        </div>
+        
+        <div class="home-image-container">
+            <img src="di.png" class="home-image" alt="Bottom Image">
+        </div>
     </div>
 
     <!-- 登录页 -->
