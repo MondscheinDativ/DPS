@@ -305,11 +305,11 @@
                     <div class="login-fields">
                         <div class="login-field">
                             <label for="reference">Reference</label>
-                            <input type="text" id="reference" required>
+                            <input type="text" id="reference" value="universityofyork" required>
                         </div>
                         <div class="login-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" value="zl8412469ycedu@york.ac.cn" required>
                         </div>
                     </div>
                     <button type="submit" class="login-button">Login</button>
@@ -420,7 +420,7 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" id="email" required>
+                    <input type="text" id="email" value="zl8412469ycedu" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -520,26 +520,31 @@
             const reference = document.getElementById('reference').value;
             const email = document.getElementById('email').value;
             
-            // 保存输入的信息到登录页
-            document.getElementById('email').value = email;
+            // 验证邮箱格式是否正确
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
             
             // 跳转到登录页
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
         });
 
-        // 登录表单提交事件
+        // 登录表单提交事件 - 验证密码是否为asdf123456
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            // 验证账户密码
-            if (email === 'zl8412469ycedu' && password === 'asdf123456') {
-                document.getElementById('loginPage').classList.add('hidden');
-                document.getElementById('mainPage').classList.remove('hidden');
-            } else {
-                alert('Invalid email or password');
+            
+            if (password !== 'asdf123456') {
+                alert('Invalid password');
+                return;
             }
+            
+            // 跳转到主页面
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('mainPage').classList.remove('hidden');
         });
 
         // 金额显示切换
